@@ -67,33 +67,10 @@ class TeXiPyDoc:
 
         f.close()
 
-    def renderPDF(self):
-        self.produceTeX()
+    def renderPDF(self, title=False):
+        self.produceTeX(title=title)
         call(['pdflatex', "%s.tex" % self.fname])
 
 
 ########################################################################################################################
 ########################################################################################################################
-
-
-if __name__ == "__main__":
-
-    d = TeXiPyDoc()
-
-    d.fname = 'test3'
-    d.title = 'Test Document'
-    d.author = 'Doug'
-
-    d.packages.append('graphicx')
-    d.packages.append('amsmath')
-
-    e = Equation()
-    e + '&x +\\pi^{2}'
-    e + '&x - 2\\pi^{3}'
-    d + e
-
-
-    T = Table([[1,2,3],[4,5,6],[7,8,9]])
-    d + T
-
-    d.renderPDF()

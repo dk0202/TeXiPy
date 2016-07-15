@@ -140,7 +140,21 @@ class Subsection(LaTeXObj):
         else:
             self.commands.append("\\subsection*{%s}" % self.subsectName)
 
+class Subsubsection(LaTeXObj):
 
+    def __init__(self, ssubsectName, numbered=False):
+        super(Subsubsection, self).__init__()
+        self.ssubsectName = ssubsectName
+        self.numbered = numbered
+
+    def addCommands(self):
+        if self.numbered:
+            self.commands.append("\\subsubsection{%s}" % self.ssubsectName)
+        else:
+            self.commands.append("\\subsubsection*{%s}" % self.ssubsectName)
+########################################################################################################################
+# Tables
+########################################################################################################################
 
 class Table(LaTeXObj):
 
@@ -164,6 +178,11 @@ class Table(LaTeXObj):
 
         self.commands.append("\\end{tabular}")
         self.commands.append("\\end{center}")
+
+
+########################################################################################################################
+# Equations
+########################################################################################################################
 
 
 class Equation(LaTeXObj):
